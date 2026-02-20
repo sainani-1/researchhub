@@ -24,7 +24,12 @@ const Navbar = () => {
           <button onClick={logout}>Logout</button>
         </>
       )}
-      {!role && <Link to="/login">Login</Link>}
+      {!role && (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </>
+      )}
       <button className={`theme-toggle${theme === 'dark' ? ' active' : ''}`} onClick={toggleTheme} title="Toggle dark/light mode">
         {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
       </button>

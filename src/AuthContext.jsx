@@ -22,11 +22,17 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (username, password) => {
-    const found = DEMO_USERS.find(u => u.username === username && u.password === password);
+    // Check demo users
+    let found = DEMO_USERS.find(u => u.username === username && u.password === password);
+    // Check registered users in localStorage
+    if (!found) {
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      found = users.find(u => u.username === username && u.password === password);
+    }
     if (found) {
       setUser(found.username);
-      setRole(found.role);
-      localStorage.setItem('authUser', JSON.stringify({ user: found.username, role: found.role }));
+      setRole(found.role || 'user');
+      localStorage.setItem('authUser', JSON.stringify({ user: found.username, role: found.role || 'user' }));
       return true;
     }
     return false;

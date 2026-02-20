@@ -8,6 +8,7 @@ import ProjectList from './components/ProjectList';
 import AdminPanel from './pages/AdminPanel';
 import UserPanel from './pages/UserPanel';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 
 function PrivateRoute({ children, role: requiredRole }) {
@@ -24,19 +25,20 @@ function App() {
     <AuthProvider>
       <Navbar />
       <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/"
-            element={
-              <PrivateRoute>
-                <div style={{padding:'2em 0 0 0',maxWidth:1200,margin:'0 auto'}}>
-                  <h2 style={{marginBottom:'0.5em'}}>Dashboard</h2>
-                  <DashboardSummary />
-                  <ProjectList />
-                </div>
-              </PrivateRoute>
-            }
-          />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <div style={{padding:'2em 0 0 0',maxWidth:1200,margin:'0 auto'}}>
+                <h2 style={{marginBottom:'0.5em'}}>Dashboard</h2>
+                <DashboardSummary />
+                <ProjectList />
+              </div>
+            </PrivateRoute>
+          }
+        />
         <Route path="/admin" element={<PrivateRoute role="admin"><AdminPanel /></PrivateRoute>} />
         <Route path="/user" element={<PrivateRoute role="user"><UserPanel /></PrivateRoute>} />
       </Routes>
