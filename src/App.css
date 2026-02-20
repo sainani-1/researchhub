@@ -1,0 +1,298 @@
+/* Modal styles for ProjectDetails */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal {
+  background: var(--bg-card, #fff);
+  color: var(--text-main, #222);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px #0005;
+  padding: 2em 2.5em 1.5em 2.5em;
+  min-width: 340px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: #e53e3e;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  font-size: 1.3em;
+  cursor: pointer;
+  line-height: 1em;
+}
+.tabs {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 1.2em;
+}
+.tabs button {
+  background: #edf2f7;
+  border: none;
+  border-radius: 6px 6px 0 0;
+  padding: 0.5em 1.2em;
+  font-weight: 500;
+  cursor: pointer;
+  color: #222;
+  transition: background 0.2s, color 0.2s;
+}
+.tabs button.active {
+  background: var(--primary, #4299e1);
+  color: #fff;
+}
+.modal input[type="text"], .modal input[type="file"] {
+  margin-right: 0.7em;
+  margin-bottom: 0.5em;
+}
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+#root {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  background: var(--bg-main);
+  color: var(--text-main);
+  transition: background 0.3s, color 0.3s;
+}
+
+:root {
+  --bg-main: #f0f4f9;
+  --text-main: #1a202c;
+  --bg-card: #fff;
+  --bg-navbar: #24304a;
+  --navbar-link: #e2e8f0;
+  --navbar-link-hover: #63b3ed;
+  --primary: #4299e1;
+  --primary-dark: #2b6cb0;
+  --border: #cbd5e1;
+  --shadow: 0 4px 24px #0002;
+  --input-bg: #f7fafc;
+  --input-border: #cbd5e1;
+  --chat-bg: #edf2f7;
+}
+
+[data-theme="dark"] {
+  --bg-main: #181c24;
+  --text-main: #e2e8f0;
+  --bg-card: #232b38;
+  --bg-navbar: #181c24;
+  --navbar-link: #a0aec0;
+  --navbar-link-hover: #63b3ed;
+  --primary: #4299e1;
+  --primary-dark: #2b6cb0;
+  --border: #2d3748;
+  --shadow: 0 4px 24px #0008;
+  --input-bg: #232b38;
+  --input-border: #2d3748;
+  --chat-bg: #232b38;
+}
+
+body, html {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+.navbar {
+  background: var(--bg-navbar);
+  color: var(--text-main);
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  border-radius: 0 0 12px 12px;
+  box-shadow: var(--shadow);
+}
+.navbar a {
+  color: var(--navbar-link);
+  text-decoration: none;
+  margin-right: 1.5rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.navbar a:hover {
+  color: var(--navbar-link-hover);
+}
+.navbar button, .theme-toggle {
+  margin-left: 1.5rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 1.2em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.navbar button:hover, .theme-toggle:hover {
+  background: var(--primary-dark);
+}
+
+.theme-toggle {
+  margin-left: auto;
+  font-size: 1.1em;
+  background: none;
+  color: var(--navbar-link);
+  border: 1px solid var(--border);
+  padding: 0.4em 1em;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.theme-toggle.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.dashboard, .admin-panel, .user-panel {
+  max-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg-main);
+  padding: 2.5em 2em 2em 2em;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1.5em 2em;
+  margin-bottom: 2em;
+  transition: box-shadow 0.2s, transform 0.15s;
+  border: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.project-list, .document-list, .chat-board, .milestone-tracker {
+  margin-bottom: 2.5em;
+}
+
+input, select, button {
+  margin: 0.5em 0;
+  padding: 0.7em 1em;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  font-size: 1rem;
+  background: var(--input-bg);
+  color: var(--text-main);
+  transition: background 0.2s, color 0.2s;
+}
+input:focus, select:focus {
+  outline: 2px solid var(--primary);
+}
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background: var(--primary-dark);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  gap: 0.5em;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 4em auto;
+  background: var(--bg-card);
+  padding: 2.5em 2em;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  .app.dark .card {
+    background: #23272f;
+    color: #e2e8f0;
+    border: 1px solid #2d3748;
+  }
+}
+
+.chat-messages {
+  background: var(--chat-bg);
+  padding: 1em;
+  height: 140px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+}
+
+.project-list ul, .document-list ul {
+  list-style: none;
+  padding: 0;
+}
+.project-list li, .document-list li {
+  background: var(--input-bg);
+  margin-bottom: 0.7em;
+  padding: 0.8em 1em;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px #0001;
+}
+.milestone-tracker strong {
+  color: var(--primary-dark);
+  font-size: 1.1em;
+}
+.milestone-tracker ul {
+  list-style: none;
+  padding: 0;
+}
+.milestone-tracker li {
+  margin-bottom: 0.5em;
+}
+.milestone-tracker input[type="checkbox"] {
+  accent-color: var(--primary);
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
